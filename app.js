@@ -14,8 +14,6 @@ mongoose.connect('mongodb://localhost/node-auth')
   .catch((err) => console.error(err));
 
 var index = require('./routes/index');
-var users = require('./routes/users');
-
 var app = express();
 
 // view engine setup
@@ -38,7 +36,6 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
 
 // passport configuration
 var User = require('./models/User');

@@ -9,7 +9,10 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/node-auth')
+mongoose.connect('mongodb://localhost/node-auth', {
+  useMongoClient: true,
+  /* other options */
+})
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
@@ -39,7 +42,7 @@ app.use('/', index);
 
 // passport configuration
 var User = require('./models/User');
-passport.use(new LocalStrategy(User.authenticate()));
+passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 

@@ -9,7 +9,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/node-auth', {
+mongoose.connect('mongodb://localhost/freeactivity', {
   useMongoClient: true,
   /* other options */
 })

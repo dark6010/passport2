@@ -8,13 +8,13 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/freeactivity', {
-  useMongoClient: true,
-  /* other options */
-})
-  .then(() =>  console.log('connection succesful'))
-  .catch((err) => console.error(err));
+
+mongoose.connect('mongodb://127.0.0.1/freeactivity', { autoIndex: false }).then(
+  () => { console.log('connection succesful') },
+  err => { console.error(err) }
+);
+
+
 
 var index = require('./routes/index');
 var app = express();
